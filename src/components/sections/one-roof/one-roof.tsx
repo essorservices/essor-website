@@ -2,7 +2,6 @@ import { Container } from "@/components/ui/container";
 import { Doodle } from "@/components/ui/doodle";
 import { Highlight } from "@/components/ui/highlight";
 import { Panel } from "@/components/ui/panel";
-import { SectionLabel } from "@/components/ui/section-label";
 import { oneRoof } from "@/content/one-roof";
 import { OneRoofExplorer } from "./explorer";
 
@@ -17,10 +16,7 @@ export function OneRoof() {
   return (
     <Panel id="un-seul-toit" tone="navy" grid aria-labelledby="un-seul-toit-titre">
       <Container className="py-20 sm:py-28 lg:py-36">
-        <SectionLabel tone="light" index="01">
-          {oneRoof.label}
-        </SectionLabel>
-        <h2 id="un-seul-toit-titre" className="mt-6 max-w-[24ch] text-display text-white">
+        <h2 id="un-seul-toit-titre" className="max-w-[24ch] text-display text-white">
           <Highlight text={oneRoof.title.slice(0, cut)} highlight={oneRoof.highlight} rotate={-2} />{" "}
           <span className="relative whitespace-nowrap">
             {oneRoof.title.slice(cut + 1)}

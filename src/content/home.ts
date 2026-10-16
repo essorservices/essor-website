@@ -26,7 +26,6 @@ export const marquee = [
 ];
 
 export const servicesIntro = {
-  label: "Services",
   title: "Cinq métiers. Une seule équipe.",
   highlight: "Une seule équipe.",
   intro:
@@ -34,7 +33,6 @@ export const servicesIntro = {
 };
 
 export const workIntro = {
-  label: "Projets",
   title: "Quelques projets, de la marque à l’appli.",
   highlight: "de la marque à l’appli.",
   intro:
@@ -43,10 +41,7 @@ export const workIntro = {
 };
 
 export const manifesto = {
-  label: "Studio",
   word: "essor",
-  phonetic: "/e.sɔʁ/",
-  kind: "nom masculin",
   definitions: [
     "Élan d’un oiseau qui prend son envol.",
     "Développement rapide d’une activité. « Une entreprise en plein essor. »",
@@ -66,7 +61,6 @@ export const notes = [
 ];
 
 export const process = {
-  label: "Méthode",
   title: "Comment on travaille.",
   highlight: "travaille.",
   steps: [
@@ -94,7 +88,6 @@ export const process = {
 };
 
 export const faq = {
-  label: "Questions",
   title: "Les questions qu’on nous pose souvent.",
   items: [
     {

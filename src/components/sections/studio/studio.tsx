@@ -1,6 +1,5 @@
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
-import { SectionLabel } from "@/components/ui/section-label";
 import { manifesto, notes } from "@/content/home";
 import { DictionaryEntry } from "./dictionary-entry";
 import { NotesBoard } from "./notes-board";
@@ -13,11 +12,7 @@ export function Studio() {
   return (
     <Panel id="studio" tone="navy" grid aria-labelledby="studio-titre">
       <Container className="py-20 sm:py-28 lg:py-36">
-        <SectionLabel tone="light" index="04">
-          {manifesto.label}
-        </SectionLabel>
-
-        <div className="mt-10 grid gap-y-16 sm:mt-12 sm:gap-y-20 lg:grid-cols-12 lg:gap-x-10">
+        <div className="grid gap-y-16 sm:gap-y-20 lg:grid-cols-12 lg:gap-x-10">
           <DictionaryEntry entry={manifesto} titleId="studio-titre" className="lg:col-span-6 xl:col-span-7" />
           <NotesBoard
             notes={notes}

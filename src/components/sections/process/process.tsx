@@ -2,7 +2,6 @@ import { Container } from "@/components/ui/container";
 import { Highlight } from "@/components/ui/highlight";
 import { Panel } from "@/components/ui/panel";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionLabel } from "@/components/ui/section-label";
 import { process } from "@/content/home";
 import { Staircase } from "./staircase";
 
@@ -15,8 +14,7 @@ export function Process() {
     <Panel id="methode" tone="white" aria-labelledby="methode-titre">
       <Container className="py-20 sm:py-28 lg:py-36">
         <Reveal>
-          <SectionLabel index="05">{process.label}</SectionLabel>
-          <h2 id="methode-titre" className="mt-6 max-w-[11ch] text-display">
+          <h2 id="methode-titre" className="max-w-[11ch] text-display">
             <Highlight text={process.title} highlight={process.highlight} rotate={-2.5} />
           </h2>
         </Reveal>

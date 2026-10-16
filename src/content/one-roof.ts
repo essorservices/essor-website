@@ -13,7 +13,6 @@ export type Business = {
 };
 
 export const oneRoof = {
-  label: "Un seul toit",
   title: "Un business au centre, tout le digital autour.",
   highlight: "tout le digital",
   intro:

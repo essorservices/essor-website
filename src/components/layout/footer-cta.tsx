@@ -2,7 +2,6 @@ import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Doodle } from "@/components/ui/doodle";
 import { Magnetic } from "@/components/ui/magnetic";
-import { SectionLabel } from "@/components/ui/section-label";
 import { Sticker } from "@/components/ui/sticker";
 import type { finalCta } from "@/content/home";
 
@@ -40,9 +39,7 @@ export function FooterCta({ cta }: { cta: typeof finalCta }) {
   return (
     <Container>
       <div className="relative border-b border-sky/15 pb-20 pt-20 sm:pb-28 sm:pt-28 lg:pb-32 lg:pt-36">
-        <SectionLabel tone="light">Votre projet</SectionLabel>
-
-        <div className="mt-8 grid items-end gap-x-10 gap-y-10 lg:mt-10 lg:grid-cols-12">
+        <div className="grid items-end gap-x-10 gap-y-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <h2 className="max-w-[15ch] text-display text-white">
               <Title text={cta.title} highlight={cta.highlight} />

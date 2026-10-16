@@ -9,7 +9,6 @@ export const workCopy = {
     "Ces projets sont des concepts : des business imaginés pour montrer comment nos métiers s’enchaînent, de l’identité aux automatisations.",
 
   index: {
-    eyebrow: "Portfolio",
     title: "Projets",
     metaDescription:
       "Cafés, restaurants, cliniques, boutiques : des projets concept qui montrent comment essor prend en charge tout le digital d’un business, de la marque à l’appli.",

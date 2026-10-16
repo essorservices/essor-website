@@ -3,7 +3,6 @@ import { Doodle } from "@/components/ui/doodle";
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionLabel } from "@/components/ui/section-label";
 import { faq } from "@/content/home";
 import { site } from "@/content/site";
 import { FaqAccordion } from "./faq-accordion";
@@ -15,8 +14,7 @@ export function Faq() {
       <Container className="py-20 sm:py-28 lg:py-36">
         <div className="grid gap-y-12 sm:gap-y-14 lg:grid-cols-12 lg:gap-x-8">
           <Reveal className="lg:sticky lg:top-[7.5rem] lg:col-span-5 lg:self-start">
-            <SectionLabel index="06">{faq.label}</SectionLabel>
-            <h2 id="faq-titre" className="mt-6 max-w-[13ch] text-title">
+            <h2 id="faq-titre" className="max-w-[13ch] text-title">
               {faq.title}
             </h2>
             <p className="mt-6 max-w-[25rem] text-lg text-navy/70 sm:text-xl">

@@ -2,7 +2,6 @@ import { StickerTitle } from "@/components/sections/services/sticker-title";
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionLabel } from "@/components/ui/section-label";
 import { workIntro } from "@/content/home";
 import { projects } from "@/content/projects";
 import { ConceptNote } from "./concept-note";
@@ -31,8 +30,7 @@ export function SelectedWork() {
     <Panel id="projets" tone="white" aria-labelledby="projets-titre">
       <Container className="py-20 sm:py-28 lg:py-36">
         <Reveal className="max-w-[64rem]">
-          <SectionLabel index="03">{workIntro.label}</SectionLabel>
-          <h2 id="projets-titre" className="mt-6 text-display">
+          <h2 id="projets-titre" className="text-display">
             <StickerTitle text={workIntro.title} highlight={workIntro.highlight} />
           </h2>
         </Reveal>

@@ -1,7 +1,6 @@
 import { Container } from "@/components/ui/container";
 import { Doodle } from "@/components/ui/doodle";
 import { Panel } from "@/components/ui/panel";
-import { SectionLabel } from "@/components/ui/section-label";
 import { Sticker } from "@/components/ui/sticker";
 import { workIntro } from "@/content/home";
 import { projects } from "@/content/projects";
@@ -30,10 +29,7 @@ export function ProjectsIndex() {
       <Container className="pb-20 pt-32 sm:pb-28 sm:pt-40 lg:pb-36 lg:pt-44">
         <div className="grid gap-y-12 lg:grid-cols-12 lg:items-end lg:gap-x-8">
           <div className="lg:col-span-8">
-            <div className="work-in">
-              <SectionLabel>{workCopy.index.eyebrow}</SectionLabel>
-            </div>
-            <h1 id="projets-titre" className="mt-5 text-[clamp(5rem,22vw,11.5rem)] leading-[0.86] sm:mt-7">
+            <h1 id="projets-titre" className="text-[clamp(5rem,22vw,11.5rem)] leading-[0.86]">
               <span className="relative inline-block">
                 <span className="-mb-[0.12em] inline-block overflow-hidden pb-[0.12em] align-bottom">
                   <span className="work-word" style={delay(0.05)}>

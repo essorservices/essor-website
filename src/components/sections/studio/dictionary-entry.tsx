@@ -5,8 +5,6 @@ import { Headword } from "./headword";
 
 type Entry = {
   word: string;
-  phonetic: string;
-  kind: string;
   definitions: readonly string[];
   ours: string;
   body: string;
@@ -40,12 +38,6 @@ export function DictionaryEntry({ entry, titleId, className }: { entry: Entry; t
         <span className="sr-only">{`Pourquoi ${entry.word}\u00A0?`}</span>
         <Headword text={entry.word} />
       </h2>
-
-      <Reveal delay={0.15} className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1 font-mono text-[0.9rem] text-sky/70 sm:mt-8 sm:text-base">
-        <span>{entry.phonetic}</span>
-        <span aria-hidden className="h-px w-8 translate-y-[-0.3em] bg-sky/25" />
-        <span className="italic">{entry.kind}</span>
-      </Reveal>
 
       <ol className="mt-10 max-w-[40rem] border-t border-sky/15 pt-8 sm:mt-12 sm:pt-10">
         {entry.definitions.map((definition, i) => {
