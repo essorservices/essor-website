@@ -7,7 +7,6 @@ export const hero = {
   sub: "Identité visuelle, stratégie, Reels, sites, applications et automatisations : on prend en charge toute la partie digitale de votre activité, pour que vous puissiez vous consacrer à votre métier.",
   primary: { label: "Démarrer un projet", href: "/contact" },
   secondary: { label: "Voir nos services", href: "/#services" },
-  audience: "Cafés, restaurants, cliniques, boutiques, et tous ceux qui veulent grandir.",
 };
 
 export const marquee = [

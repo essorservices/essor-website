@@ -71,7 +71,7 @@
   :root {
     color-scheme: light;
     --page: var(--color-sky);
-    --header-h: 4.5rem;
+    --header-h: 5rem;
   }
 
   html {

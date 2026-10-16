@@ -17,7 +17,7 @@ const label =
   "Exemples de livrables, tirés de nos projets concept\u00A0: une application, un Reel, une identité visuelle, un site web, une publication pour les réseaux sociaux et une automatisation";
 
 /**
- * The fan of deliverables spilling out of the bottom of the hero panel, under its "projets concept" caption.
+ * The fan of deliverables spilling out of the bottom of the hero panel.
  * Geometry and hover live in CSS (hero.css); this island only feeds the scroll progress
  * and, on touch screens, highlights each card in turn once.
  */
@@ -63,13 +63,6 @@ export function Fan({ className }: { className?: string }) {
 
   return (
     <div ref={ref} className={cn("hero-fan", className)}>
-      {/* The cards show concept brands: say so where they are seen, in the dashed "Projet concept" tag style */}
-      <p className="hero-in hero-caption flex justify-center px-3" style={{ "--d": "0.86s" } as React.CSSProperties}>
-        <span className="inline-flex min-h-7 items-center gap-1.5 rounded-full border border-dashed border-navy/40 bg-sky px-3 py-1 text-center font-mono text-[0.66rem] uppercase leading-[1.3] tracking-[0.1em] text-navy sm:tracking-[0.14em]">
-          <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-coral" />
-          Exemples tirés de nos projets concept
-        </span>
-      </p>
       <div
         role="img"
         aria-label={label}

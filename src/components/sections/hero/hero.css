@@ -121,12 +121,7 @@
     transition: box-shadow 0.5s var(--hero-expo);
   }
 
-  /* "Projets concept" caption: rises with the cards (same lift as .hero-slot) so they never slide over it */
-  .hero-caption {
-    translate: 0 calc(var(--p) * -0.16 * var(--card-w) * 1.25);
-  }
-
-  /* The cards, under the caption */
+  /* Room between the buttons and the cards */
   .hero-deck {
     margin-top: 0.625rem;
   }
@@ -135,7 +130,7 @@
       margin-top: clamp(1.25rem, 3svh, 2rem);
     }
   }
-  /* Where the touch autoplay runs (no fine pointer, see Fan), the lifted card's label must clear the caption */
+  /* Where the touch autoplay runs (no fine pointer, see Fan), the lifted card's label must clear the buttons */
   @media not all and (hover: hover) and (pointer: fine) {
     .hero-deck {
       margin-top: calc(var(--card-w) * 0.17 + 1.75rem);

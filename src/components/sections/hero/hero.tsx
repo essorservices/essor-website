@@ -23,7 +23,7 @@ export function Hero() {
   return (
     <Panel tone="white" aria-labelledby="hero-title" className="hero">
       <div className="flex flex-col sm:min-h-[min(calc(100svh-1.5rem),62rem)]">
-        <Container className="flex flex-1 flex-col items-center justify-center pt-24 text-center sm:pt-[clamp(5.75rem,13.5svh,9rem)]">
+        <Container className="flex flex-1 flex-col items-center justify-center pt-36 text-center sm:pt-[clamp(8.5rem,20svh,12.5rem)]">
           <SectionLabel className="hero-in justify-center text-[0.7rem] tracking-[0.1em] sm:text-[0.78rem] sm:tracking-[0.14em]">
             {hero.eyebrow}
           </SectionLabel>
@@ -50,16 +50,9 @@ export function Hero() {
               {hero.secondary.label}
             </ButtonLink>
           </div>
-
-          <p
-            className="hero-in mt-4 max-w-[21rem] font-mono text-[0.68rem] uppercase leading-[1.7] tracking-[0.12em] text-navy/60 sm:mt-[clamp(1rem,2.4svh,1.5rem)] sm:max-w-none sm:text-[0.72rem] sm:tracking-[0.14em]"
-            style={at(0.74)}
-          >
-            {hero.audience}
-          </p>
         </Container>
 
-        <div className="pt-3 sm:pt-[clamp(1rem,2.4svh,1.5rem)]">
+        <div className="pt-6 sm:pt-[clamp(2rem,4.5svh,3rem)]">
           <Fan />
         </div>
       </div>

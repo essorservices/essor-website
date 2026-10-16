@@ -102,7 +102,7 @@ function HeaderBar({ pathname }: { pathname: string | null }) {
           transition={{ duration: isHidden ? 0.45 : 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto w-full max-w-[1360px] px-5 sm:px-8 lg:px-12"
         >
-          <div ref={barRef} className="pointer-events-auto relative flex h-14 items-center justify-between">
+          <div ref={barRef} className="pointer-events-auto relative flex h-16 items-center justify-between">
             <span
               aria-hidden
               className={cn(
