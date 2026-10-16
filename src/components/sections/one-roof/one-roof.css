@@ -1,0 +1,67 @@
+/*
+  "Un seul toit" section. Prefixed globals (or-*), same pattern as deliverables.css.
+  Only transform/opacity are animated.
+*/
+@layer theme, base, components, utilities;
+
+@layer components {
+  /* Autoplay timer: the bar inside the active tab. Its animationend advances the tab,
+     and pausing the animation pauses the autoplay (hover, focus, off-screen). */
+  .or-progress {
+    transform-origin: left center;
+    animation: or-progress var(--or-duration, 5.5s) linear forwards;
+  }
+  .or-progress[data-paused="true"] {
+    animation-play-state: paused;
+  }
+
+  /* Dashes travelling down the mobile timeline */
+  .or-spine {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgb(227 236 255 / 0.4) 0 5px,
+      transparent 5px 12px
+    );
+    animation: or-spine 1.2s linear infinite;
+  }
+
+  /* Static horizontal dashes joining the card to the timeline on tablets */
+  .or-branch {
+    background-image: repeating-linear-gradient(
+      to right,
+      rgb(227 236 255 / 0.4) 0 5px,
+      transparent 5px 12px
+    );
+  }
+
+  /* Desktop pills drift by a few pixels, each on its own period and phase */
+  @media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+    .or-float[data-float] {
+      animation: or-float var(--or-float-d, 6.5s) ease-in-out var(--or-float-delay, 0s) infinite;
+    }
+  }
+
+  /* The explorer root sets data-paused while the section is off screen.
+     Kept after .or-float[data-float]: same specificity, so order decides. */
+  [data-paused] :is(.or-spine, .or-float) {
+    animation-play-state: paused;
+  }
+
+  @keyframes or-progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @keyframes or-float {
+    0%, 100% { transform: translate3d(0, 0, 0); }
+    25% { transform: translate3d(0, -4px, 0); }
+    75% { transform: translate3d(0, 4px, 0); }
+  }
+  @keyframes or-spine {
+    from { transform: translate3d(0, -12px, 0); }
+    to { transform: translate3d(0, 0, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .or-spine { animation: none; }
+  }
+}

@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/*
+  essor design tokens.
+  The default Tailwind palette is removed on purpose: only brand colours exist.
+  Navy carries text and dark surfaces, white/sky carry light surfaces,
+  coral is an accent (about 10% of any screen).
+*/
+@theme {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #ffffff;
+
+  --color-navy: #0f1045;
+  --color-navy-950: #07082a;
+  --color-navy-900: #0a0b36;
+  --color-navy-700: #1b1d5e;
+  --color-navy-600: #2a2d78;
+
+  --color-coral: #ff5c5c;
+  --color-coral-600: #f04545;
+  --color-coral-200: #ffc2c2;
+  --color-coral-100: #ffe5e5;
+
+  --color-sky: #e3ecff;
+  --color-sky-50: #f4f7ff;
+  --color-sky-200: #cfdcfa;
+  --color-sky-300: #b5c8f3;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, monospace;
+
+  --text-mega: clamp(3.25rem, 9.5vw, 9.5rem);
+  --text-mega--line-height: 0.9;
+  --text-display: clamp(2.6rem, 6.4vw, 6.25rem);
+  --text-display--line-height: 0.95;
+  --text-title: clamp(2rem, 4.2vw, 3.75rem);
+  --text-title--line-height: 1;
+
+  --radius-panel: clamp(1.25rem, 2.6vw, 2.25rem);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --shadow-sticker: 0 3px 0 0 rgb(7 8 42 / 0.9);
+  --shadow-card: 0 1px 0 rgb(15 16 69 / 0.06), 0 12px 32px -12px rgb(15 16 69 / 0.28);
+  --shadow-lift: 0 2px 0 rgb(15 16 69 / 0.08), 0 28px 60px -20px rgb(15 16 69 / 0.45);
+
+  /* The Marquee component sets its own duration inline */
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-dash: dash 1.2s linear infinite;
+  /* CSS entrance for first-screen content: runs on first paint, no JavaScript needed */
+  --animate-rise: rise 0.9s var(--ease-out-expo) both;
+
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-100%, 0, 0); }
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translate3d(0, var(--rise-y, 24px), 0); }
+  }
+  @keyframes dash {
+    to { stroke-dashoffset: -24; }
+  }
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --page: var(--color-sky);
+    --header-h: 4.5rem;
+  }
+
+  html {
+    background: var(--page);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--page);
+    color: var(--color-navy);
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-coral);
+    color: var(--color-navy);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  /* Coral is under 3:1 on sky, so the ring turns navy on sky surfaces */
+  :where(.bg-sky, .bg-sky-50) :focus-visible {
+    outline-color: var(--color-navy);
+  }
+
+  /* Focus scrolling (Tab, Shift+Tab, .focus()) keeps controls clear of the fixed header.
+     Set on focusable elements rather than as scroll-padding on html, so anchor links still land flush. */
+  :is(a[href], button, input, select, textarea, summary, [tabindex]) {
+    scroll-margin-top: calc(var(--header-h) + 1rem);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 96;
+    font-weight: 600;
+    letter-spacing: -0.028em;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  img, svg, video { display: block; }
+}
+
+@layer utilities {
+  /* Navy grid with plus markers at intersections (Bond-style canvas) */
+  .bg-grid {
+    --grid-size: 72px;
+    --grid-line: rgb(227 236 255 / 0.07);
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: -1px -1px;
+  }
+  .bg-grid-plus {
+    --grid-size: 72px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cpath d='M0 -5v10M-5 0h10M72 -5v10M67 0h10M0 67v10M-5 72h10M72 67v10M67 72h10' stroke='%23E3ECFF' stroke-opacity='.28' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: -1px -1px;
+  }
+  .bg-grid-light {
+    --grid-size: 72px;
+    --grid-line: rgb(15 16 69 / 0.06);
+    background-image:
+      linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: -1px -1px;
+  }
+  /* Fade a grid out towards the edges */
+  .mask-fade {
+    mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 40%, transparent 100%);
+  }
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+  /* Outlined text: set the stroke colour with --stroke (defaults to the inherited text colour). */
+  .text-stroke {
+    -webkit-text-stroke: 1.5px var(--stroke, var(--color-navy));
+    color: transparent;
+  }
+  .font-wide { font-variation-settings: "opsz" 96, "wdth" 100; }
+  .font-condensed { font-variation-settings: "opsz" 96, "wdth" 75; }
+  .tabular { font-variant-numeric: tabular-nums; }
+}
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

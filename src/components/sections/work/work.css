@@ -1,0 +1,49 @@
+/*
+  Work pages: entrances for content above the fold (/projets hero, case study intro).
+  They are CSS animations so they play on first paint instead of waiting for hydration
+  (Motion's whileInView renders its hidden initial state on the server).
+  Prefixed globals, like hero.css: CSS Modules are not processed with the current Turbopack CSS rule.
+  Reduced motion: globals.css shortens every animation to ~0ms, so the final state shows at once.
+*/
+@layer theme, base, components, utilities;
+
+@layer components {
+  .work-in {
+    animation: work-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+
+  /* A headline word sliding up out of its mask (the parent clips it) */
+  .work-word {
+    display: inline-block;
+    animation: work-word 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+
+  /* Sticker slapped on: scales in with a little rotation overshoot */
+  .work-pop {
+    display: inline-block;
+    animation: work-pop 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+
+  @keyframes work-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+
+  @keyframes work-word {
+    from {
+      transform: translateY(110%);
+    }
+  }
+
+  @keyframes work-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.6) rotate(-8deg);
+    }
+  }
+}

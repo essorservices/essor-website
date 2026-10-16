@@ -1,0 +1,184 @@
+/*
+  Deliverable mockups.
+  Every loop below only runs while the root carries [data-play]
+  (animate prop on + in view + no reduced motion), so 20+ instances stay cheap.
+  Without it, each composition shows its designed resting state.
+*/
+
+/* Same layer order as Tailwind, so utility classes can override these defaults */
+@layer theme, base, components, utilities;
+
+@layer components {
+  .dlv {
+    contain: layout paint;
+    -webkit-user-select: none;
+    user-select: none;
+    font-synthesis: none;
+  }
+
+  /* Brand display style, driven by the theme personality (see theme.ts) */
+  .dlv-display {
+    font-weight: var(--dw);
+    font-variation-settings: var(--dv);
+    letter-spacing: var(--dl);
+    text-transform: var(--dt);
+    line-height: 0.95;
+  }
+
+  .dlv-mono {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .dlv-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* ---------- reel ---------- */
+  .dlv[data-play] .dlv-drift {
+    animation: dlv-drift 9s ease-in-out infinite alternate;
+  }
+  .dlv[data-play] .dlv-drift-alt {
+    animation: dlv-drift-alt 11s ease-in-out infinite alternate;
+  }
+  .dlv-progress {
+    transform-origin: left center;
+    transform: scaleX(0.42);
+  }
+  .dlv[data-play] .dlv-progress {
+    animation: dlv-progress 7s linear infinite;
+  }
+  .dlv-playhead {
+    transform: translateX(42%);
+  }
+  .dlv[data-play] .dlv-playhead {
+    animation: dlv-playhead 7s linear infinite;
+  }
+  .dlv[data-play] .dlv-ticker {
+    animation: dlv-ticker 9s linear infinite;
+  }
+  .dlv[data-play] .dlv-blink {
+    animation: dlv-blink 1.6s steps(1, end) infinite;
+  }
+
+  @keyframes dlv-drift {
+    from { transform: translate3d(-4%, 2%, 0) scale(1); }
+    to { transform: translate3d(5%, -3%, 0) scale(1.08); }
+  }
+  @keyframes dlv-drift-alt {
+    from { transform: translate3d(6%, -2%, 0) rotate(0deg); }
+    to { transform: translate3d(-6%, 4%, 0) rotate(8deg); }
+  }
+  @keyframes dlv-progress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @keyframes dlv-playhead {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+  }
+  @keyframes dlv-ticker {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes dlv-blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  /* ---------- identity ---------- */
+  .dlv[data-play] .dlv-spin {
+    animation: dlv-spin 28s linear infinite;
+  }
+  @keyframes dlv-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ---------- website ---------- */
+  .dlv-cursor {
+    transform: translate3d(0, 0, 0);
+  }
+  .dlv[data-play] .dlv-cursor {
+    animation: dlv-cursor 6.5s var(--ease-out-expo) infinite;
+  }
+  .dlv[data-play] .dlv-press {
+    animation: dlv-press 6.5s ease-out infinite;
+  }
+  @keyframes dlv-cursor {
+    0% { transform: translate3d(320%, 260%, 0); opacity: 0; }
+    10% { opacity: 1; }
+    38%, 70% { transform: translate3d(0, 0, 0); opacity: 1; }
+    92%, 100% { transform: translate3d(-140%, 360%, 0); opacity: 0; }
+  }
+  @keyframes dlv-press {
+    0%, 40% { transform: scale(1); }
+    44% { transform: scale(0.92); }
+    50%, 100% { transform: scale(1); }
+  }
+
+  /* ---------- app ---------- */
+  .dlv-ring {
+    stroke-dashoffset: var(--ring-rest);
+  }
+  .dlv[data-play] .dlv-ring {
+    animation: dlv-ring 1.6s var(--ease-out-expo) both;
+  }
+  .dlv[data-play] .dlv-float {
+    animation: dlv-float 6s ease-in-out infinite alternate;
+  }
+  @keyframes dlv-ring {
+    from { stroke-dashoffset: 100; }
+    to { stroke-dashoffset: var(--ring-rest); }
+  }
+  @keyframes dlv-float {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(0, -4%, 0); }
+  }
+
+  /* ---------- post ---------- */
+  .dlv[data-play] .dlv-zoom {
+    animation: dlv-zoom 14s ease-in-out infinite alternate;
+  }
+  .dlv[data-play] .dlv-pop {
+    animation: dlv-pop 4s var(--ease-out-back) infinite;
+  }
+  @keyframes dlv-zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.07); }
+  }
+  @keyframes dlv-pop {
+    0%, 62% { transform: scale(1); }
+    70% { transform: scale(1.35); }
+    80%, 100% { transform: scale(1); }
+  }
+
+  /* ---------- automation ---------- */
+  .dlv[data-play] .dlv-flow {
+    animation: dlv-flow 1.4s linear infinite;
+  }
+  .dlv-lit {
+    opacity: 0;
+  }
+  .dlv[data-play] .dlv-lit {
+    animation: dlv-lit 6s ease-out infinite;
+    animation-delay: calc(var(--i) * 1.2s);
+  }
+  @keyframes dlv-flow {
+    to { stroke-dashoffset: -8; }
+  }
+  @keyframes dlv-lit {
+    0% { opacity: 0; }
+    5%, 20% { opacity: 1; }
+    30%, 100% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dlv * {
+      animation: none !important;
+    }
+  }
+}
