@@ -1,6 +1,5 @@
 import { buttonClasses } from "@/components/ui/button";
 import { ArrowUpRightIcon } from "@/components/ui/icons";
-import { SectionLabel } from "@/components/ui/section-label";
 import { Sticker } from "@/components/ui/sticker";
 import { briefPage } from "@/content/brief";
 import { site } from "@/content/site";
@@ -67,11 +66,10 @@ function DirectContact() {
 export function BriefIntro({ className }: { className?: string }) {
   return (
     <div className={cn("relative", className)}>
-      <SectionLabel tone="light">{briefPage.label}</SectionLabel>
       <div className="animate-rise [--rise-y:22px]">
         <h1
           id="contact-titre"
-          className="mt-7 max-w-[11ch] text-[clamp(2.9rem,10vw,4.6rem)] lg:text-[clamp(2.75rem,5vw,5rem)] leading-[0.98] text-white sm:mt-8"
+          className="max-w-[11ch] text-[clamp(2.9rem,10vw,4.6rem)] lg:text-[clamp(2.75rem,5vw,5rem)] leading-[0.98] text-white"
         >
           <Title />
         </h1>

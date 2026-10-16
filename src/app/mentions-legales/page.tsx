@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { Panel } from "@/components/ui/panel";
-import { SectionLabel } from "@/components/ui/section-label";
 import { hero } from "@/content/home";
 import { site } from "@/content/site";
 import { company, formFields, host, lastUpdated } from "./legal";
@@ -103,8 +102,7 @@ export default function LegalPage() {
     <Panel tone="white">
       <Container className="pb-20 pt-32 sm:pb-28 sm:pt-40 lg:pb-32">
         <header className="max-w-[46rem]">
-          <SectionLabel>Informations légales</SectionLabel>
-          <h1 className="mt-6 text-display">Mentions légales</h1>
+          <h1 className="text-display">Mentions légales</h1>
           <p className="mt-6 font-mono text-[0.78rem] uppercase tracking-[0.14em] text-navy/60">
             Dernière mise à jour : <span className="tabular whitespace-nowrap">{lastUpdated}</span>
           </p>

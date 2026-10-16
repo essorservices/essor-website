@@ -31,10 +31,7 @@ export function Footer() {
                   Mentions légales
                 </Link>
               </p>
-              <p className="flex items-center gap-2.5">
-                <span aria-hidden className="size-1.5 rounded-full bg-coral" />
-                {site.tagline}
-              </p>
+              <p>{site.tagline}</p>
             </div>
           </Container>
         </Panel>
